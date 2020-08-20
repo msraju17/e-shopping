@@ -1,0 +1,25 @@
+<div class="container">
+  <form [formGroup]="form" (ngSubmit)="login()">
+    <div class="form-group">
+      <label for="userName"><i>Pin Code</i>
+      </label>
+      <fa-icon class="icon float-right" (click)="updateInfo()" [icon]="info"></fa-icon>
+      <input
+            formControlName="username" 
+            type="text" 
+            class="form-control" 
+            id="username">
+      <div *ngIf="username.touched && username.invalid" class='alert alert-danger'>
+        <div *ngIf="username.errors.required"> Enter the pin code.. </div>
+        <div *ngIf="username.errors.usernameCheck">Not a valid pin code </div>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="!form.valid">login</button>
+  </form>
+  <div *ngIf="detail$" class="card text-white bg-info" style="max-width: 35rem;">
+    <div class="card-header"><i>How to login?</i></div>
+    <div class="card-body">
+      <p class="card-text">Use pincode: <i> "admin"</i> to manage products and order</p>
+    </div>
+  </div>
+</div>

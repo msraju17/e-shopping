@@ -1,0 +1,20 @@
+<h2>Order History</h2>
+<div class="container">
+    <span class="badge badge-light">View order details is not implemented....</span>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Cusomter Name</th>
+                <th>Order date</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let orders of orderHistory">
+                <td> {{ orders.customerName }} </td>
+                <td> {{ orders.orderCreated}} </td>
+                <td><a routerLink="/">view</a></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,49 @@
+<h2>Shopping Cart</h2>
+<div class="container">
+    <ng-container>
+        <p *ngIf="cart$; else noItems">
+            You have {{ cart$ }}  items  in your shopping cart.
+        </p>
+        <ng-template #noItems>
+            There are not items in your cart.
+        </ng-template>
+        <table class="table" *ngIf="productList.length > 0">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th> Title </th>
+                    <th> Quantity </th>
+                    <th> Price </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of productList">
+                    <td> <img src="{{ item.product.imageUrl }}" alt="{{ item.product.title }}" class="img-thumbnail"> </td>
+                    <td> {{ item.product.title }} </td>
+                    <td> {{ item.quanity }} </td>
+                    <td> {{ item.quanity*item.product.price | currency: USD }}  </td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th>{{ totalPrice$ | currency:USD }}</th>
+                </tr>
+            </tfoot>
+        </table>
+        <div *ngIf="cart$">
+            <button (click)="clearCart()" class="btn btn-danger btn-sm">Clear Cart</button>
+            <button (click)="checkOut()" 
+            class="btn btn-primary btn-sm float-right">
+            Check Out</button>
+
+        </div>
+       
+    </ng-container>
+</div>
+
+
+
+
